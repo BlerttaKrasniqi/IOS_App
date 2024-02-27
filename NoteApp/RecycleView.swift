@@ -20,8 +20,10 @@ class RecycleView: UIViewController, UITableViewDataSource, UITableViewDelegate 
         tableView.delegate = self
         fetchDeletedNotes()
     }
-
-    func fetchDeletedNotes() {
+    
+    
+    
+   func fetchDeletedNotes() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -52,4 +54,77 @@ class RecycleView: UIViewController, UITableViewDataSource, UITableViewDelegate 
         cell.detailTextLabel?.text = note.pershkrimi
         return cell
     }
+    
+    /*@IBAction func restoreButtonTapped(_ sender: UIButton) {
+        // Get the index path of the cell containing the tapped button
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        if let indexPath = tableView.indexPathForRow(at: point) {
+            // Retrieve the note associated with the tapped button
+            let selectedNote = deletedNotes[indexPath.row]
+            
+            // Remove the deletion date to restore the note
+            selectedNote.deletedDate = nil
+            
+            // Remove the note from the deletedNotes array
+            deletedNotes.remove(at: indexPath.row)
+            
+            // Delete the corresponding row from the table view
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            // Save changes to Core Data
+            saveChanges()
+        }*/
+    
+    
+  /*  func saveChanges() {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            
+            do {
+                try context.save()
+                print("Changes saved successfully")
+            } catch {
+                print("Failed to save changes: \(error)")
+            }
+        }*/
+    
+    @IBAction func deleteAllPermanentlyButtonTapped(_ sender: UIButton) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            // Fetch all notes with deletedDate not nil
+            let request = NSFetchRequest<Note>(entityName: "Note")
+            request.predicate = NSPredicate(format: "deletedDate != nil")
+            let notesToDelete = try context.fetch(request)
+            
+            // Delete each note permanently
+            for note in notesToDelete {
+                context.delete(note)
+            }
+            
+            // Save changes to Core Data
+            try context.save()
+            
+            // Update the deletedNotes array (remove all elements)
+            deletedNotes.removeAll()
+            
+            // Reload the table view to reflect the changes
+            tableView.reloadData()
+            
+            print("All notes deleted permanently.")
+        } catch {
+            print("Failed to delete notes permanently: \(error)")
+        }
+    }
+
 }
+ 
+
+
