@@ -17,6 +17,8 @@
 		C94462432B8CDDCC00D20942 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94462422B8CDDCC00D20942 /* TableViewCell.swift */; };
 		C94462472B8CDDEF00D20942 /* DisplayNoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94462462B8CDDEF00D20942 /* DisplayNoteTableViewController.swift */; };
 		C944624A2B8CE20800D20942 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94462492B8CE20800D20942 /* Note.swift */; };
+		C944624D2B8D07FC00D20942 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C944624C2B8D07FC00D20942 /* MainView.swift */; };
+		C94462532B8D185800D20942 /* RecycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94462522B8D185800D20942 /* RecycleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C94462422B8CDDCC00D20942 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C94462462B8CDDEF00D20942 /* DisplayNoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayNoteTableViewController.swift; sourceTree = "<group>"; };
 		C94462492B8CE20800D20942 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		C944624C2B8D07FC00D20942 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C94462522B8D185800D20942 /* RecycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecycleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +74,13 @@
 				C94462422B8CDDCC00D20942 /* TableViewCell.swift */,
 				C94462462B8CDDEF00D20942 /* DisplayNoteTableViewController.swift */,
 				C94462302B8CDD5D00D20942 /* Main.storyboard */,
+				C944624C2B8D07FC00D20942 /* MainView.swift */,
 				C94462362B8CDD6500D20942 /* Assets.xcassets */,
 				C94462382B8CDD6500D20942 /* LaunchScreen.storyboard */,
 				C944623B2B8CDD6500D20942 /* Info.plist */,
 				C94462332B8CDD5D00D20942 /* NoteApp.xcdatamodeld */,
 				C94462492B8CE20800D20942 /* Note.swift */,
+				C94462522B8D185800D20942 /* RecycleView.swift */,
 			);
 			path = NoteApp;
 			sourceTree = "<group>";
@@ -149,12 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94462532B8D185800D20942 /* RecycleView.swift in Sources */,
 				C94462432B8CDDCC00D20942 /* TableViewCell.swift in Sources */,
 				C944622F2B8CDD5D00D20942 /* AddNoteView.swift in Sources */,
 				C944624A2B8CE20800D20942 /* Note.swift in Sources */,
 				C94462472B8CDDEF00D20942 /* DisplayNoteTableViewController.swift in Sources */,
 				C944622B2B8CDD5D00D20942 /* AppDelegate.swift in Sources */,
 				C944622D2B8CDD5D00D20942 /* SceneDelegate.swift in Sources */,
+				C944624D2B8D07FC00D20942 /* MainView.swift in Sources */,
 				C94462352B8CDD5D00D20942 /* NoteApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
