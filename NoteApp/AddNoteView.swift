@@ -1,33 +1,22 @@
-//
-//  ViewController.swift
-//  NoteApp
-//
-//  Created by Blerta on 2/26/24.
-//
-
 import UIKit
 import CoreData
 
 class AddNoteView: UIViewController {
     
     @IBOutlet weak var titulliField: UITextField!
-    
     @IBOutlet weak var pershkrimiTV: UITextView!
     
     var selectednote: Note? = nil
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         if(selectednote != nil){
             titulliField.text = selectednote?.titulli
             pershkrimiTV.text = selectednote?.pershkrimi
         }
     }
-    
-    
+       
     @IBAction func ruajButoni(sender: Any){
         
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -66,11 +55,7 @@ class AddNoteView: UIViewController {
             }catch{
                 print ("Fatch failed")
             }
-        }
-        
-        
-        
-        
+        }        
     }
     
     @IBAction func fshijbuton(_ sender: Any) {
@@ -82,7 +67,6 @@ class AddNoteView: UIViewController {
         
         let alertController = UIAlertController(title: "Delete note", message: "Are you sure you want to delete this note?", preferredStyle: .alert)
         
-       
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.deleteSelectedNote()
@@ -90,8 +74,6 @@ class AddNoteView: UIViewController {
         
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)
-        
-        
         present(alertController, animated: true, completion: nil)
     }
 
@@ -116,9 +98,5 @@ class AddNoteView: UIViewController {
             print ("Fetch failed")
         }
     }
-   
-
-
 }
-
 
