@@ -1,18 +1,9 @@
-//
-//  DisplayNoteTableViewController.swift
-//  NoteApp
-//
-//  Created by Blerta on 2/26/24.
-//
-
 import UIKit
 import CoreData
 
 var NoteList = [Note]()
 
 class DisplayNoteTableViewController: UITableViewController {
-    
-  
     var firstload = true
     
     func nonDeletedNotes() -> [Note]{
@@ -45,9 +36,7 @@ class DisplayNoteTableViewController: UITableViewController {
             }
         }
     }
-
-  
-    
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let notecell = tableView.dequeueReusableCell(withIdentifier: "noteCellId",  for: indexPath) as! TableViewCell
         
@@ -84,6 +73,4 @@ class DisplayNoteTableViewController: UITableViewController {
             
         }
     }
-    
-
 }
