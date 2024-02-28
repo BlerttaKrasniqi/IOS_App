@@ -91,39 +91,52 @@ class RecycleView: UIViewController, UITableViewDataSource, UITableViewDelegate 
             }
         }*/
     
-    @IBAction func deleteAllPermanentlyButtonTapped(_ sender: UIButton) {
+    @IBAction func deleteAllPermanentlyButton(_ sender: UIButton) {
+
+        let alertController = UIAlertController(title: "Delete All Permanently", message: "Are you sure you want to delete all notes permanently?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+
+            self.performDeleteAllPermanently()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    private func performDeleteAllPermanently() {
+
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
-        
         let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-        
+
         do {
             // Fetch all notes with deletedDate not nil
             let request = NSFetchRequest<Note>(entityName: "Note")
             request.predicate = NSPredicate(format: "deletedDate != nil")
             let notesToDelete = try context.fetch(request)
-            
+
             // Delete each note permanently
             for note in notesToDelete {
                 context.delete(note)
             }
-            
+
             // Save changes to Core Data
             try context.save()
-            
+
             // Update the deletedNotes array (remove all elements)
             deletedNotes.removeAll()
-            
+
             // Reload the table view to reflect the changes
             tableView.reloadData()
-            
+
             print("All notes deleted permanently.")
         } catch {
             print("Failed to delete notes permanently: \(error)")
         }
     }
-
 }
  
 
