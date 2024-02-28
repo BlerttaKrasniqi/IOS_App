@@ -1,9 +1,3 @@
-//
-//  Note.swift
-//  NoteApp
-//
-//  Created by Blerta on 2/26/24.
-//
 
 import CoreData
 
